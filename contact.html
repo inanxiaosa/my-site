@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Tianze Tang — email, GitHub repository and the two links submitted for the assignment. The form is plain HTML and opens your own mail client.">
+  <meta name="author" content="Tianze Tang">
+  <title>Contact — Tianze Tang</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">TT</span>
+        <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+      </a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="html.html">HTML notes</a></li>
+        <li><a href="css.html">CSS notes</a></li>
+        <li><a href="practice.html">Practice</a></li>
+        <li><a href="validation.html">Validation</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="wrap" style="padding-top:34px;">
+      <span class="eyebrow"><span class="dot"></span>Contact</span>
+      <h1>Reach me: <span class="grad">e-mail is fastest</span></h1>
+      <p class="lede">
+        Questions, feedback, or a teacher checking the submission — mail is the reliable route.
+        The form below is plain HTML: pressing send opens the mail program on your own computer.
+      </p>
+    </section>
+
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">Contact</span>
+        <h2>Write to me</h2>
+        <p>Direct details on the left, a plain HTML form on the right.</p>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="live">
+          <div class="demo-label">Direct details</div>
+          <dl class="info-list">
+            <dt>e-mail</dt>
+            <dd><a href="mailto:you@example.com">you@example.com</a></dd>
+            <dt>GitHub</dt>
+            <dd><a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">github.com/your-username</a></dd>
+            <dt>Course</dt>
+            <dd>Introduction to Digital Services · DIG001IT1AE-3033</dd>
+            <dt>Location</dt>
+            <dd>Chengdu, China</dd>
+          </dl>
+          <p class="hint">The two addresses above are placeholders — replace them with my real e-mail and GitHub username before submitting.</p>
+        </div>
+
+        <form action="mailto:you@example.com" method="post" enctype="text/plain">
+          <div class="demo-label">Write a message</div>
+          <div class="form-row">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" placeholder="How should I address you?">
+          </div>
+          <div class="form-row">
+            <label for="email">Your e-mail</label>
+            <input id="email" name="email" type="email" placeholder="name@example.com">
+          </div>
+          <div class="form-row">
+            <label for="topic">About</label>
+            <select id="topic" name="topic">
+              <option>A comment on this site</option>
+              <option>An HTML or CSS question</option>
+              <option>The course assignment</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="What would you like to say?"></textarea>
+          </div>
+          <button class="btn-demo" type="submit">Open my mail program</button>
+          <p class="hint">
+            This is the HTML <code>mailto:</code> method: your mail client takes over after you press
+            send. There is no back end and no script, so the page cannot show a “message sent” notice.
+          </p>
+        </form>
+      </div>
+
+        <figure style="margin-top:20px;">
+          <img src="images/contact-flow.svg" alt="The HTML form on the left, an envelope in the middle, and the visitor's own mail program on the right.">
+          <figcaption>Figure 1: the form has a <code>mailto:</code> action, so pressing the button hands the message to the visitor's mail program. No back end, no script.</figcaption>
+        </figure>
+    </section>
+
+    <section class="wrap section" id="submission">
+      <div class="sec-head">
+        <span class="kicker">Submission</span>
+        <h2>The two links</h2>
+        <p>The task asks for two addresses: the code repository and the first published page.</p>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <span class="num">link 1</span>
+          <h3>Code repository</h3>
+          <p style="font-family:var(--mono);font-size:.85rem;word-break:break-all;">
+            https://github.com/your-username/my-site
+          </p>
+          <p class="hint">All six HTML files, the stylesheet and the images live here.</p>
+        </div>
+        <div class="card">
+          <span class="num">link 2</span>
+          <h3>Published page</h3>
+          <p style="font-family:var(--mono);font-size:.85rem;word-break:break-all;">
+            https://your-username.github.io/my-site/
+          </p>
+          <p class="hint">Opens on the home page; the navigation reaches the other five.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">Questions</span>
+        <h2>What a reader usually asks</h2>
+      </div>
+
+      <details open>
+        <summary>What was the site built with?</summary>
+        <p>Hand-written HTML5 plus one external CSS file. No JavaScript, no framework, no site generator, no template.</p>
+      </details>
+      <details>
+        <summary>Why is the first file called index.html?</summary>
+        <p>Because a server looks for that file by default when no filename is given. It is the front door of the site.</p>
+      </details>
+      <details>
+        <summary>Does it work on a phone?</summary>
+        <p>Yes. There is a <code>viewport</code> meta tag and two media queries at 940px and 700px: three columns become two, then one, and the navigation is allowed to wrap.</p>
+      </details>
+      <details>
+        <summary>Where do the images come from?</summary>
+        <p>Three diagrams drawn as SVG by me, stored in <code>images/</code>. Small files, sharp at any size, and no licensing questions.</p>
+      </details>
+      <details>
+        <summary>What would you improve next?</summary>
+        <p>More content first — a real project page instead of a placeholder. Later, once JavaScript is on the menu, search and filtering.</p>
+      </details>
+    </section>
+
+    <section class="wrap section">
+      <div class="demo">
+        <div>
+          <span class="kicker">Back to the start</span>
+          <h2 style="font-size:1.3rem;">Look at the home page again</h2>
+          <p class="hint">It holds the coverage table that maps every course topic to a page of this site.</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn-primary" href="index.html">Home →</a>
+          <a class="btn" href="practice.html">Practice page</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:12px;">
+          <span class="brand-mark" aria-hidden="true">TT</span>
+          <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+        </a>
+        <p>Coursework for Introduction to Digital Services (DIG001IT1AE-3033), hand-written in HTML and CSS.</p>
+      </div>
+      <div>
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="html.html">HTML notes</a></li>
+          <li><a href="css.html">CSS notes</a></li>
+          <li><a href="practice.html">Practice</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>About</h2>
+        <ul>
+          <li>Author: Tianze Tang</li>
+          <li>Course: Digital Services</li>
+          <li>Location: Chengdu, China</li>
+          <li><a href="#main">Back to top ↑</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Tianze Tang · Personal website</span>
+      <span>HTML + CSS. No JavaScript.</span>
+    </div>
+  </footer>
+</body>
+</html>

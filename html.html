@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="My HTML self-study notes: what HTML is, tags and attributes, the document skeleton, the meta tags in the head, headings and paragraphs, lists, links and navigation, images, semantic elements.">
+  <meta name="author" content="Tianze Tang">
+  <title>HTML notes — Tianze Tang</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">TT</span>
+        <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+      </a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="html.html" aria-current="page">HTML notes</a></li>
+        <li><a href="css.html">CSS notes</a></li>
+        <li><a href="practice.html">Practice</a></li>
+        <li><a href="validation.html">Validation</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="wrap" style="padding-top:34px;">
+      <span class="eyebrow"><span class="dot"></span>Self study · HTML</span>
+      <h1>HTML notes: <span class="grad">the skeleton of a page</span></h1>
+      <p class="lede">
+        This is my own summary after working through the HTML part of the course. Each section gives
+        the rule first, then code I can copy, then the mistake I actually made while building this site.
+      </p>
+    </section>
+
+    <!-- Table of contents: plain anchors, no scripting -->
+    <div class="wrap">
+      <nav class="toc" aria-label="On this page">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#what-is-html">What HTML is</a></li>
+          <li><a href="#skeleton">The document skeleton</a></li>
+          <li><a href="#head">Three things in the head</a></li>
+          <li><a href="#text">Headings and paragraphs</a></li>
+          <li><a href="#elements">Elements, tags, attributes</a></li>
+          <li><a href="#lists">Lists</a></li>
+          <li><a href="#links">Links and navigation</a></li>
+          <li><a href="#images">Images</a></li>
+          <li><a href="#semantic">Semantic elements</a></li>
+          <li><a href="#rules">Rules I keep</a></li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="wrap note">
+      <!-- ===== 1 ===== -->
+      <section id="what-is-html" class="section">
+        <span class="kicker">Section 1</span>
+        <h2>What HTML is</h2>
+        <p>
+          HTML stands for HyperText Markup Language. It is not a programming language: it does not
+          calculate and it does not decide anything. It does one job — <strong>it tells the browser
+          what a piece of content is</strong>: a heading, a paragraph, a list item, or a link to
+          another page.
+        </p>
+        <p>The course separates three technologies, and this is how I remember them:</p>
+        <ul class="tight">
+          <li><strong>HTML</strong> — structure: what is on the page</li>
+          <li><strong>CSS</strong> — style: what it looks like</li>
+          <li><strong>JavaScript</strong> — behaviour: how it reacts (not required for this task)</li>
+        </ul>
+        <p>
+          An element is usually a start tag, some content and an end tag:
+          <code>&lt;p&gt;Hello&lt;/p&gt;</code>. Some elements have no content and no end tag —
+          <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;meta&gt;</code>.
+        </p>
+        <blockquote>
+          A browser reads HTML from top to bottom and turns it into a page. It forgives most mistakes,
+          but the result is not always what you meant — so tags are closed, and nesting is correct.
+        </blockquote>
+      </section>
+
+      <!-- ===== 2 ===== -->
+      <section id="skeleton" class="section">
+        <span class="kicker">Section 2</span>
+        <h2>The document skeleton</h2>
+        <p>Every HTML file starts from the same eight lines. After that, everything is added inside <code>body</code>.</p>
+        <div class="code"><span>index.html</span>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Page title&lt;/title&gt;
+  &lt;link rel="stylesheet" href="css/style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Main heading&lt;/h1&gt;
+  &lt;p&gt;Content.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        </div>
+        <h3>Why the first file must be called index.html</h3>
+        <p>
+          When someone opens a site without naming a file, the server looks for a default document.
+          In practice that file is <code>index.html</code> — the front door. That is why my home page
+          is called that, and every other page is linked from it.
+        </p>
+        <details>
+          <summary>Mistake I made: leaving out &lt;!DOCTYPE html&gt;</summary>
+          <p>
+            Without that line the browser renders in quirks mode, where the box model and some default
+            styles behave differently from the standard. Sizes that looked right in my head came out
+            wrong on screen until the doctype was there.
+          </p>
+        </details>
+      </section>
+
+      <!-- ===== 3 ===== -->
+      <section id="head" class="section">
+        <span class="kicker">Section 3</span>
+        <h2>Three things in the head</h2>
+        <p>Nothing in <code>head</code> is visible, and yet the page fails without it.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>The three lines every page of this site has</caption>
+            <thead>
+              <tr><th scope="col">Line</th><th scope="col">Job</th><th scope="col">If it is missing</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+                <td>Tells the browser which character set to use</td>
+                <td>ä, ö, 中, € and ✓ turn into question marks or boxes</td>
+              </tr>
+              <tr>
+                <td><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></td>
+                <td>Makes the page width equal the screen width</td>
+                <td>Phones zoom out and render the whole page tiny</td>
+              </tr>
+              <tr>
+                <td><code>&lt;title&gt;…&lt;/title&gt;</code></td>
+                <td>The name of the page in the tab and in search results</td>
+                <td>The tab shows a file path, search results have no proper title</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="hint">
+          A detail I only noticed later: the <code>title</code> should differ per page. This page is
+          “HTML notes — Tianze Tang”, the home page is “Tianze Tang — My GitHub website”.
+        </p>
+      </section>
+
+      <!-- ===== 4 ===== -->
+      <section id="text" class="section">
+        <span class="kicker">Section 4</span>
+        <h2>Headings and paragraphs</h2>
+        <p>
+          There are six heading levels, <code>h1</code> to <code>h6</code>. A page has
+          <strong>exactly one h1</strong>: it names the page. <code>h2</code> are the big sections,
+          <code>h3</code> the subsections inside them.
+        </p>
+        <ul class="tight">
+          <li>Do not pick <code>h3</code> because the text should be smaller — size belongs to CSS.</li>
+          <li>A heading is always followed by content, never by another heading.</li>
+          <li>Do not skip levels: <code>h2</code> straight to <code>h4</code> breaks the outline a screen reader reads aloud.</li>
+        </ul>
+        <p>
+          Paragraphs are <code>&lt;p&gt;</code>. Two paragraphs mean two <code>p</code> elements,
+          not one <code>p</code> with two <code>&lt;br&gt;</code> inside.
+        </p>
+
+        <div class="demo">
+          <div>
+            <div class="demo-label">Result</div>
+            <div class="live">
+              <p style="font-size:1.25rem;font-weight:700;margin:0 0 6px;">This is what an h2 looks like</p>
+              <p style="color:var(--muted);margin:0 0 14px;">This is the paragraph that follows it. The space between blocks comes from the stylesheet.</p>
+              <p style="margin:0;">Here I have <strong>bold</strong>, <em>italic</em>, <code>inline code</code> and the abbreviation <abbr title="HyperText Markup Language">HTML</abbr>.</p>
+            </div>
+          </div>
+          <div>
+            <div class="demo-label">Code</div>
+            <div class="code">
+<pre>&lt;h2&gt;This is what an h2 looks like&lt;/h2&gt;
+&lt;p&gt;This is the paragraph that follows.&lt;/p&gt;
+&lt;p&gt;Here I have &lt;strong&gt;bold&lt;/strong&gt;,
+   &lt;em&gt;italic&lt;/em&gt; and
+   &lt;abbr title="HyperText Markup
+   Language"&gt;HTML&lt;/abbr&gt;.&lt;/p&gt;</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 5 ===== -->
+      <section id="elements" class="section">
+        <span class="kicker">Section 5</span>
+        <h2>Elements, tags, attributes</h2>
+        <p>Three words that look interchangeable and are not:</p>
+        <dl class="info-list">
+          <dt>element</dt>
+          <dd>the whole thing: start tag + content + end tag — <code>&lt;p&gt;Hello&lt;/p&gt;</code></dd>
+          <dt>tag</dt>
+          <dd>the angle-bracket marker: <code>&lt;p&gt;</code> and <code>&lt;/p&gt;</code></dd>
+          <dt>attribute</dt>
+          <dd>extra information inside the start tag, as name="value": <code>href="about.html"</code>, <code>alt="a diagram"</code>, <code>class="card"</code></dd>
+        </dl>
+        <p>
+          Values are always quoted. And when the same look is needed twice, it goes into a class
+          instead of being repeated as an inline style — that is what <code>class</code> is for.
+        </p>
+        <details>
+          <summary>Mistake I made: writing &lt; directly into the text</summary>
+          <p>
+            To show a less-than sign on the page you must write <code>&amp;lt;</code>, otherwise the
+            browser thinks a tag is starting. Greater-than is <code>&amp;gt;</code>, ampersand is
+            <code>&amp;amp;</code>. Every code sample on this site is written that way — which is why
+            the source of this page looks doubled up.
+          </p>
+        </details>
+      </section>
+
+      <!-- ===== 6 ===== -->
+      <section id="lists" class="section">
+        <span class="kicker">Section 6</span>
+        <h2>Lists</h2>
+        <p>Three kinds: unordered (<code>ul</code>), ordered (<code>ol</code>) and description (<code>dl</code>).</p>
+
+        <div class="grid cols-3">
+          <div class="live">
+            <div class="demo-label">Unordered</div>
+            <ul class="tight">
+              <li>HTML — structure</li>
+              <li>CSS — style
+                <ul>
+                  <li>colour</li>
+                  <li>layout</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="live">
+            <div class="demo-label">Ordered</div>
+            <ol class="tight">
+              <li>Write the skeleton</li>
+              <li>Add content</li>
+              <li>Write the CSS</li>
+              <li>Check the links</li>
+            </ol>
+          </div>
+          <div class="live">
+            <div class="demo-label">Description</div>
+            <dl style="margin:0;">
+              <dt><code>ul</code></dt>
+              <dd style="margin:0 0 8px;color:var(--muted);">order does not matter</dd>
+              <dt><code>ol</code></dt>
+              <dd style="margin:0;color:var(--muted);">order matters</dd>
+            </dl>
+          </div>
+        </div>
+
+        <p class="hint">
+          A nested list goes <em>inside</em> the <code>&lt;li&gt;</code> it belongs to, never between two
+          <code>li</code> elements. I got this wrong first time and the second list escaped the first one.
+        </p>
+      </section>
+
+      <!-- ===== 7 ===== -->
+      <section id="links" class="section">
+        <span class="kicker">Section 7</span>
+        <h2>Links and navigation</h2>
+        <p>
+          The “hyper” in hypertext is this one element: <code>&lt;a&gt;</code>. <code>href</code> is
+          where it goes, the content is what the visitor reads.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Three kinds of link, all used on this site</caption>
+            <thead><tr><th scope="col">Kind</th><th scope="col">Markup</th><th scope="col">Used for</th></tr></thead>
+            <tbody>
+              <tr><td>Another page</td><td><code>&lt;a href="about.html"&gt;About&lt;/a&gt;</code></td><td>the navigation bar, “read more” links</td></tr>
+              <tr><td>Anchor on this page</td><td><code>&lt;a href="#head"&gt;Jump&lt;/a&gt;</code></td><td>the contents list, back to top</td></tr>
+              <tr><td>Another site</td><td><code>&lt;a href="https://…" target="_blank" rel="noopener"&gt;</code></td><td>references such as MDN</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Why the navigation bar is on every page</h3>
+        <p>
+          With six pages, a menu only on the home page means the visitor is trapped after one click.
+          So the same <code>nav</code> sits in the <code>header</code> of all six files, and exactly one
+          attribute changes: <code>aria-current="page"</code> on the current page.
+        </p>
+        <div class="code"><span>the header of every page</span>
+<pre>&lt;header class="site-header"&gt;
+  &lt;nav class="wrap nav" aria-label="Main navigation"&gt;
+    &lt;a class="brand" href="index.html"&gt;Tianze Tang&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="html.html" aria-current="page"&gt;HTML notes&lt;/a&gt;&lt;/li&gt;
+      &lt;!-- and so on --&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</pre>
+        </div>
+        <p>
+          Link text matters too. “Click here” tells the visitor nothing; “HTML notes” tells them
+          exactly what happens next.
+        </p>
+      </section>
+
+      <!-- ===== 8 ===== -->
+      <section id="images" class="section">
+        <span class="kicker">Section 8</span>
+        <h2>Images</h2>
+        <p>An image needs two attributes: <code>src</code> (where the file is) and <code>alt</code> (what it shows).</p>
+        <div class="code"><span>img and figure</span>
+<pre>&lt;img src="images/figure-render.svg"
+     alt="Diagram: HTML code on the left, the browser
+          in the middle, the rendered page on the right"&gt;
+
+&lt;figure&gt;
+  &lt;img src="images/figure-render.svg" alt="…"&gt;
+  &lt;figcaption&gt;Figure 1: code, browser, page.&lt;/figcaption&gt;
+&lt;/figure&gt;</pre>
+        </div>
+
+        <figure>
+          <img src="images/figure-render.svg" alt="Diagram: three lines of HTML code on the left, a browser parsing them in the middle, and the rendered heading, paragraph and image on the right.">
+          <figcaption>Figure 1: the same content in three states — as code, inside the browser, and on the page.</figcaption>
+        </figure>
+
+        <ul class="tight" style="margin-top:16px;">
+          <li><strong>Paths are relative.</strong> <code>images/a.svg</code> means “the images folder next to this HTML file”.</li>
+          <li><strong>Size belongs in CSS.</strong> Not a pile of <code>width="800"</code> attributes — <code>width:100%</code> in the stylesheet is easier to maintain.</li>
+          <li><strong>alt is a sentence.</strong> <code>alt="image1"</code> is worthless; describing what the picture explains is the point.</li>
+        </ul>
+      </section>
+
+      <!-- ===== 9 ===== -->
+      <section id="semantic" class="section">
+        <span class="kicker">Section 9</span>
+        <h2>Semantic elements</h2>
+        <p>
+          A <code>div</code> can divide a page, but it carries no meaning. The semantic elements do the
+          same job and say what the region is, so a screen reader can jump straight to the navigation
+          or the main content.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>The semantic elements this site uses</caption>
+            <thead><tr><th scope="col">Element</th><th scope="col">What goes in it</th><th scope="col">Where on this site</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;header&gt;</code></td><td>page header: logo and navigation</td><td>the bar on top of every page</td></tr>
+              <tr><td><code>&lt;nav&gt;</code></td><td>a group of navigation links</td><td>the six page links</td></tr>
+              <tr><td><code>&lt;main&gt;</code></td><td>the content of this page, only one</td><td>the body of every page</td></tr>
+              <tr><td><code>&lt;section&gt;</code></td><td>a topic with its own heading</td><td>each numbered section of the notes</td></tr>
+              <tr><td><code>&lt;article&gt;</code></td><td>content that makes sense on its own</td><td>the notes article as a whole</td></tr>
+              <tr><td><code>&lt;figure&gt;</code></td><td>an image together with its caption</td><td>the diagram above</td></tr>
+              <tr><td><code>&lt;footer&gt;</code></td><td>author, copyright, links</td><td>the bottom of every page</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===== 10 ===== -->
+      <section id="rules" class="section">
+        <span class="kicker">Section 10</span>
+        <h2>Rules I keep</h2>
+        <ol class="timeline">
+          <li data-step="1"><h3>Structure first, style second</h3><p>If the page makes sense with CSS turned off, the HTML is done.</p></li>
+          <li data-step="2"><h3>One h1 per page</h3><p>It names the page; everything else descends from it without skipping a level.</p></li>
+          <li data-step="3"><h3>Semantic before div</h3><p>header / nav / main / section / footer first, <code>div</code> last.</p></li>
+          <li data-step="4"><h3>Indent two spaces</h3><p>Nesting is visible at a glance and edits do not get lost.</p></li>
+          <li data-step="5"><h3>Click every link you add</h3><p>With six pages, broken links are the first thing to break.</p></li>
+          <li data-step="6"><h3>Always finish on a narrow window</h3><p>Phone preview, then look for a horizontal scrollbar.</p></li>
+        </ol>
+      </section>
+
+      <section class="wrap section">
+        <div class="demo">
+          <div>
+            <span class="kicker">Next</span>
+            <h2 style="font-size:1.3rem;">On to the CSS notes</h2>
+            <p class="hint">Structure is done. Next is where the colour, the spacing and the layout of this site come from.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <a class="btn btn-primary" href="css.html">CSS notes →</a>
+            <a class="btn" href="practice.html">Jump to the practice page</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:12px;">
+          <span class="brand-mark" aria-hidden="true">TT</span>
+          <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+        </a>
+        <p>Coursework for Introduction to Digital Services (DIG001IT1AE-3033), hand-written in HTML and CSS.</p>
+      </div>
+      <div>
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="html.html">HTML notes</a></li>
+          <li><a href="css.html">CSS notes</a></li>
+          <li><a href="practice.html">Practice</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>About</h2>
+        <ul>
+          <li>Author: Tianze Tang</li>
+          <li>Course: Digital Services</li>
+          <li>Location: Chengdu, China</li>
+          <li><a href="#main">Back to top ↑</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Tianze Tang · Personal website</span>
+      <span>HTML + CSS. No JavaScript.</span>
+    </div>
+  </footer>
+</body>
+</html>

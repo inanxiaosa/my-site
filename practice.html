@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="My test site: hover cards, CSS-only tabs, progress bars, shapes drawn with CSS, a gallery, a data table, an accordion and three kinds of link — all without JavaScript.">
+  <meta name="author" content="Tianze Tang">
+  <title>Practice page — Tianze Tang</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">TT</span>
+        <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+      </a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="html.html">HTML notes</a></li>
+        <li><a href="css.html">CSS notes</a></li>
+        <li><a href="practice.html" aria-current="page">Practice</a></li>
+        <li><a href="validation.html">Validation</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="wrap" style="padding-top:34px;">
+      <span class="eyebrow"><span class="dot"></span>Test site · everything from the notes, once</span>
+      <h1>Practice page: <span class="grad">proof that it works</span></h1>
+      <p class="lede">
+        The notes explain; this page demonstrates. Everything below is built with HTML and CSS only —
+        including the parts that look like they need a script. The source is short enough to read.
+      </p>
+    </section>
+
+    <!-- ===== 1. hover ===== -->
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">01 · transition</span>
+        <h2>Cards that move on hover</h2>
+        <p>Move the pointer over them: the card lifts, the border lights up, the shadow deepens. Two properties and <code>:hover</code>.</p>
+      </div>
+      <div class="grid cols-3">
+        <div class="hover-demo">
+          <h3>Lifts 6px</h3>
+          <p class="hint">transform: translateY(-6px)</p>
+        </div>
+        <div class="hover-demo">
+          <h3>And scales slightly</h3>
+          <p class="hint">scale(1.02)</p>
+        </div>
+        <div class="hover-demo">
+          <h3>Border lights up</h3>
+          <p class="hint">border-color: var(--accent)</p>
+        </div>
+      </div>
+      <div class="code" style="margin-top:16px;"><span>css/style.css</span>
+<pre>.hover-demo { transition: transform .25s, box-shadow .25s; }
+.hover-demo:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--accent);
+}</pre>
+      </div>
+    </section>
+
+    <!-- ===== 2. :target tabs ===== -->
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">02 · :target</span>
+        <h2>Tabs without JavaScript</h2>
+        <p>Click the three links: the panel changes. The trick is that the link jumps to <code>#tab-2</code>, and CSS shows only the panel that is targeted.</p>
+      </div>
+
+      <div class="live">
+        <div class="tabs">
+          <a href="#tab-1">HTML</a>
+          <a href="#tab-2">CSS</a>
+          <a href="#tab-3">Publishing</a>
+        </div>
+
+        <div class="tab-panel" id="tab-1">
+          <h3>What HTML does</h3>
+          <p class="hint">It classifies the content: this is a heading, this is a paragraph, this is a list, this is a link. Without it the browser has no idea what matters.</p>
+        </div>
+        <div class="tab-panel" id="tab-2">
+          <h3>What CSS does</h3>
+          <p class="hint">It decides spacing, colour, size and arrangement. Same HTML, different stylesheet — a different website.</p>
+        </div>
+        <div class="tab-panel" id="tab-3">
+          <h3>What publishing does</h3>
+          <p class="hint">Push the folder to a GitHub repository, switch Pages on, wait a minute, and the URL works. That is the whole deployment story for a static site.</p>
+        </div>
+      </div>
+
+      <div class="code" style="margin-top:16px;"><span>CSS-only tabs</span>
+<pre>.tab-panel { display: none; }
+.tab-panel:target { display: block; }
+#tab-1 { display: block; }                       /* first one by default */
+.tabs:has(a:target) ~ #tab-1 { display: none; }   /* hide it once another is picked */</pre>
+      </div>
+    </section>
+
+    <!-- ===== 3. progress ===== -->
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">03 · animation</span>
+        <h2>Progress bars</h2>
+        <p>Width plus <code>@keyframes</code>. Reload the page and they grow from zero.</p>
+      </div>
+
+      <div class="live">
+        <div class="skill">
+          <div class="top"><span>HTML</span><span>85%</span></div>
+          <div class="progress"><span style="width:85%;"></span></div>
+        </div>
+        <div class="skill">
+          <div class="top"><span>CSS</span><span>70%</span></div>
+          <div class="progress"><span style="width:70%;animation-delay:.15s;"></span></div>
+        </div>
+        <div class="skill">
+          <div class="top"><span>Publishing with GitHub Pages</span><span>100%</span></div>
+          <div class="progress"><span style="width:100%;animation-delay:.3s;"></span></div>
+        </div>
+      </div>
+      <p class="hint">All three share the same <code>.progress &gt; span</code> structure; only <code>width</code> and <code>animation-delay</code> differ.</p>
+    </section>
+
+    <!-- ===== 4. shapes ===== -->
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">04 · shapes</span>
+        <h2>Shapes drawn with CSS</h2>
+        <p>No image files — borders, radii and gradients.</p>
+      </div>
+
+      <div class="live">
+        <div class="shapes">
+          <div class="shape-tri" role="img" aria-label="A triangle built from borders"></div>
+          <div class="shape-circle" role="img" aria-label="A circle built from a radial gradient"></div>
+          <div class="shape-square" role="img" aria-label="A checked square built from two offset gradients"></div>
+          <p class="hint" style="max-width:300px;">Triangle: three transparent borders. Circle: <code>border-radius:50%</code>. Chequerboard: two 45° gradients offset by half a tile.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. gallery ===== -->
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">05 · images</span>
+        <h2>Gallery with figure and figcaption</h2>
+        <p>Three SVGs I drew myself: small files, sharp at any size, no copyright questions.</p>
+      </div>
+
+      <div class="gallery">
+        <figure>
+          <img src="images/figure-render.svg" alt="Diagram: three lines of HTML code on the left, a browser parsing them in the middle, the rendered page on the right.">
+          <figcaption>Code → browser → page. This is how I understand HTML now.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/figure-responsive.svg" alt="Diagram: the same page at desktop, tablet and phone width, with three, two and one column.">
+          <figcaption>One HTML file, three widths, two media queries.</figcaption>
+        </figure>
+        <figure>
+          <div style="background-color:#0a1420;background-image:url('images/pattern.svg');background-size:46px 46px;min-height:150px;border-radius:8px;"></div>
+          <figcaption>Background image: a 683-byte SVG pattern, tiled with <code>background-repeat</code>.</figcaption>
+        </figure>
+        <figure>
+          <div style="display:grid;place-items:center;min-height:150px;background:var(--surface-3);border-radius:8px;font-family:var(--mono);font-size:.8rem;color:var(--muted);text-align:center;">
+            reserved<br>for future work
+          </div>
+          <figcaption>A placeholder. When I have a real project, its screenshot goes here.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== 6. table ===== -->
+    <section class="wrap section" id="table">
+      <div class="sec-head">
+        <span class="kicker">06 · table</span>
+        <h2>Tables are for data</h2>
+        <p>Not for layout. This one lists the six files of this site.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>The six pages of this website</caption>
+          <thead>
+            <tr><th scope="col">File</th><th scope="col">Content</th><th scope="col">Technique used</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>index.html</code></td><td>home page and course coverage</td><td>semantic regions, Grid cards, table</td></tr>
+            <tr><td><code>about.html</code></td><td>about me</td><td>description list, Flex, progress bars</td></tr>
+            <tr><td><code>html.html</code></td><td>HTML notes</td><td>contents anchors, accordion, code blocks</td></tr>
+            <tr><td><code>css.html</code></td><td>CSS notes</td><td>figures, gradients, media queries</td></tr>
+            <tr><td><code>practice.html</code></td><td>this page</td><td>transitions, <code>:target</code>, keyframes, shapes</td></tr>
+            <tr><td><code>contact.html</code></td><td>contact</td><td>form, <code>mailto:</code> link</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== 7. accordion ===== -->
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">07 · accordion</span>
+        <h2>details and summary</h2>
+        <p>HTML has a built-in collapsible block. Click a heading to open it. No script involved.</p>
+      </div>
+
+      <details open>
+        <summary>Why no JavaScript?</summary>
+        <p>The brief asks for HTML and CSS only. More practically: everything this site needs — navigation, tabs, collapsing sections — is already supported by the browser, so a script would be a detour.</p>
+      </details>
+      <details>
+        <summary>What if a later project needs interaction?</summary>
+        <p>Then I learn JavaScript properly. Structure and style first; otherwise the script is just a harder way to fight myself.</p>
+      </details>
+      <details>
+        <summary>What was the hardest part?</summary>
+        <p>Keeping the navigation identical. Six files each carry a copy of the menu, so one change is six edits. In the end I perfected the bar on one page, copied the whole block into the other five, and only changed where <code>aria-current</code> sits.</p>
+      </details>
+    </section>
+
+    <!-- ===== 8. links ===== -->
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">08 · links</span>
+        <h2>Three kinds of link</h2>
+      </div>
+      <div class="grid cols-3">
+        <div class="live">
+          <div class="demo-label">Same site</div>
+          <p><a href="about.html">About me →</a></p>
+          <p class="hint"><code>href="about.html"</code></p>
+        </div>
+        <div class="live">
+          <div class="demo-label">Anchor</div>
+          <p><a href="#main">Back to the top of this page ↑</a></p>
+          <p class="hint"><code>href="#main"</code></p>
+        </div>
+        <div class="live">
+          <div class="demo-label">Another site</div>
+          <p><a href="https://developer.mozilla.org/en-US/docs/Web" target="_blank" rel="noopener noreferrer">MDN Web docs ↗</a></p>
+          <p class="hint"><code>target="_blank" rel="noopener"</code></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:12px;">
+          <span class="brand-mark" aria-hidden="true">TT</span>
+          <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+        </a>
+        <p>Coursework for Introduction to Digital Services (DIG001IT1AE-3033), hand-written in HTML and CSS.</p>
+      </div>
+      <div>
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="html.html">HTML notes</a></li>
+          <li><a href="css.html">CSS notes</a></li>
+          <li><a href="practice.html">Practice</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>About</h2>
+        <ul>
+          <li>Author: Tianze Tang</li>
+          <li>Course: Digital Services</li>
+          <li>Location: Chengdu, China</li>
+          <li><a href="#main">Back to top ↑</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Tianze Tang · Personal website</span>
+      <span>HTML + CSS. No JavaScript.</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" width="900" height="380" role="img" aria-labelledby="c1 c2">
+  <title id="c1">How the contact form sends a message without JavaScript</title>
+  <desc id="c2">The form is written in HTML with a mailto action, so pressing the button opens the visitor's own mail program with the subject and body filled in.</desc>
+  <defs>
+    <linearGradient id="env" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5ce6b4"/>
+      <stop offset="1" stop-color="#7aa7ff"/>
+    </linearGradient>
+    <style>
+      .t { font-family: "Segoe UI", Arial, sans-serif; font-size: 15px; fill: #e9eff7; }
+      .m { font-family: Consolas, monospace; font-size: 13px; fill: #93a3b8; }
+      .k { font-family: Consolas, monospace; font-size: 13px; fill: #5ce6b4; }
+    </style>
+  </defs>
+
+  <rect width="900" height="380" fill="#0b1219"/>
+
+  <!-- form card -->
+  <rect x="52" y="60" width="250" height="250" rx="14" fill="#121d29" stroke="#2b3a4a" stroke-width="2"/>
+  <text class="m" x="76" y="96">contact.html</text>
+  <rect x="76" y="112" width="202" height="18" rx="4" fill="#1d2b3a"/>
+  <rect x="76" y="140" width="202" height="18" rx="4" fill="#1d2b3a"/>
+  <rect x="76" y="168" width="202" height="48" rx="4" fill="#1d2b3a"/>
+  <rect x="76" y="232" width="126" height="34" rx="17" fill="#5ce6b4"/>
+  <text x="139" y="254" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#06121a">send</text>
+  <text class="m" x="76" y="292">no script, no server</text>
+
+  <!-- arrow -->
+  <path d="M314 184 H392" stroke="#5ce6b4" stroke-width="3" fill="none"/>
+  <path d="M384 176 L394 184 L384 192 Z" fill="#5ce6b4"/>
+
+  <!-- envelope -->
+  <g>
+    <rect x="404" y="124" width="180" height="120" rx="10" fill="url(#env)" opacity=".18" stroke="#5ce6b4" stroke-width="2"/>
+    <path d="M404 130 L494 196 L584 130" fill="none" stroke="#5ce6b4" stroke-width="2.5" stroke-linejoin="round"/>
+    <text class="m" x="494" y="266" text-anchor="middle">mailto:you@example.com</text>
+  </g>
+
+  <!-- arrow -->
+  <path d="M596 184 H674" stroke="#7aa7ff" stroke-width="3" fill="none"/>
+  <path d="M666 176 L676 184 L666 192 Z" fill="#7aa7ff"/>
+
+  <!-- mail client -->
+  <rect x="686" y="88" width="176" height="192" rx="12" fill="#f5f9fd" stroke="#2b3a4a"/>
+  <rect x="686" y="88" width="176" height="26" rx="12" fill="#dfe9f4"/>
+  <text x="700" y="106" font-family="Consolas, monospace" font-size="11" fill="#52647a">new message</text>
+  <text x="700" y="140" font-family="Consolas, monospace" font-size="10" fill="#6b7d92">To: you@example.com</text>
+  <text x="700" y="158" font-family="Consolas, monospace" font-size="10" fill="#6b7d92">Subject: name — topic</text>
+  <rect x="700" y="172" width="148" height="8" rx="4" fill="#dbe7f3"/>
+  <rect x="700" y="190" width="120" height="8" rx="4" fill="#e3edf6"/>
+  <rect x="700" y="208" width="140" height="8" rx="4" fill="#e3edf6"/>
+  <rect x="700" y="240" width="66" height="24" rx="12" fill="#2f8f6d"/>
+  <text x="733" y="256" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" font-weight="700" fill="#ffffff">send</text>
+
+  <text x="52" y="348" class="k">&lt;form action="mailto:you@example.com" method="post" enctype="text/plain"&gt;</text>
+  <text x="52" y="30" class="t">The visitor's own mail program sends the message — that is why the button says “Open my mail program”.</text>
+</svg>

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" role="img" aria-labelledby="t d">
+  <title id="t">How a browser turns HTML code into a readable page</title>
+  <desc id="d">Left side: three lines of HTML markup. Middle: the browser parses the markup. Right side: the rendered heading and paragraph.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1622"/>
+      <stop offset="1" stop-color="#111d2b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5ce6b4"/>
+      <stop offset="1" stop-color="#7aa7ff"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5ce6b4"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="560" fill="url(#bg)"/>
+
+  <!-- grid -->
+  <g stroke="#1d2c3d" stroke-width="1">
+    <path d="M0 70 H960 M0 140 H960 M0 210 H960 M0 280 H960 M0 350 H960 M0 420 H960 M0 490 H960"/>
+    <path d="M80 0 V560 M160 0 V560 M240 0 V560 M320 0 V560 M400 0 V560 M480 0 V560 M560 0 V560 M640 0 V560 M720 0 V560 M800 0 V560 M880 0 V560"/>
+  </g>
+
+  <!-- left: code panel -->
+  <g>
+    <rect x="42" y="96" width="330" height="368" rx="16" fill="#0a121b" stroke="#26333f"/>
+    <circle cx="66" cy="120" r="6" fill="#ff5f57"/>
+    <circle cx="88" cy="120" r="6" fill="#febc2e"/>
+    <circle cx="110" cy="120" r="6" fill="#28c840"/>
+    <text x="66" y="168" font-family="Consolas, monospace" font-size="19" fill="#7aa7ff">&lt;h1&gt;</text>
+    <text x="146" y="168" font-family="Consolas, monospace" font-size="19" fill="#e8eef7">Hello</text>
+    <text x="212" y="168" font-family="Consolas, monospace" font-size="19" fill="#7aa7ff">&lt;/h1&gt;</text>
+
+    <text x="66" y="212" font-family="Consolas, monospace" font-size="19" fill="#7aa7ff">&lt;p&gt;</text>
+    <text x="118" y="212" font-family="Consolas, monospace" font-size="19" fill="#e8eef7">My</text>
+    <text x="160" y="212" font-family="Consolas, monospace" font-size="19" fill="#e8eef7">first</text>
+    <text x="212" y="212" font-family="Consolas, monospace" font-size="19" fill="#e8eef7">site.</text>
+    <text x="272" y="212" font-family="Consolas, monospace" font-size="19" fill="#7aa7ff">&lt;/p&gt;</text>
+
+    <text x="66" y="256" font-family="Consolas, monospace" font-size="19" fill="#5ce6b4">&lt;img</text>
+    <text x="126" y="256" font-family="Consolas, monospace" font-size="19" fill="#ffc45c">src</text>
+    <text x="164" y="256" font-family="Consolas, monospace" font-size="19" fill="#93a3b8">=</text>
+    <text x="178" y="256" font-family="Consolas, monospace" font-size="19" fill="#5ce6b4">"cat.jpg"</text>
+    <text x="284" y="256" font-family="Consolas, monospace" font-size="19" fill="#5ce6b4">&gt;</text>
+
+    <text x="66" y="316" font-family="Consolas, monospace" font-size="15" fill="#52647a">&lt;!-- 3 elements --&gt;</text>
+    <text x="66" y="352" font-family="Consolas, monospace" font-size="15" fill="#52647a">&lt;!-- browser reads top → bottom --&gt;</text>
+
+    <rect x="66" y="382" width="270" height="2" fill="#1d2c3d"/>
+    <text x="66" y="416" font-family="Consolas, monospace" font-size="14" fill="#93a3b8">index.html</text>
+    <text x="66" y="442" font-family="Consolas, monospace" font-size="14" fill="#93a3b8">UTF-8 · text/html</text>
+  </g>
+
+  <!-- arrow -->
+  <path d="M392 280 H470" stroke="url(#accent)" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- middle: browser -->
+  <g>
+    <rect x="470" y="150" width="180" height="260" rx="18" fill="#101b27" stroke="#2b3a4a"/>
+    <rect x="470" y="150" width="180" height="34" rx="18" fill="#16232f"/>
+    <rect x="470" y="176" width="180" height="8" fill="#16232f"/>
+    <circle cx="490" cy="167" r="5" fill="#3a4a5c"/>
+    <circle cx="507" cy="167" r="5" fill="#3a4a5c"/>
+    <circle cx="524" cy="167" r="5" fill="#3a4a5c"/>
+    <text x="560" y="232" text-anchor="middle" font-family="Consolas, monospace" font-size="27" fill="#5ce6b4">{ }</text>
+    <text x="560" y="268" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" fill="#e8eef7">parse</text>
+    <text x="560" y="292" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" fill="#93a3b8">+ layout</text>
+    <text x="560" y="320" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="15" fill="#93a3b8">CSS · JS</text>
+    <text x="560" y="380" text-anchor="middle" font-family="Consolas, monospace" font-size="12" fill="#52647a">the browser</text>
+  </g>
+
+  <!-- arrow -->
+  <path d="M660 280 H738" stroke="url(#accent)" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- right: rendered -->
+  <g>
+    <rect x="738" y="96" width="180" height="368" rx="16" fill="#f7fafc" stroke="#2b3a4a"/>
+    <rect x="738" y="96" width="180" height="30" rx="16" fill="#e6edf5"/>
+    <rect x="738" y="116" width="180" height="10" fill="#e6edf5"/>
+    <text x="758" y="117" font-family="Consolas, monospace" font-size="11" fill="#52647a">127.0.0.1</text>
+
+    <text x="758" y="176" font-family="Segoe UI, sans-serif" font-size="30" font-weight="700" fill="#101a26">Hello</text>
+    <text x="758" y="208" font-family="Segoe UI, sans-serif" font-size="14" fill="#3d4f63">My first site.</text>
+    <rect x="758" y="230" width="140" height="90" rx="8" fill="#dbe7f3" stroke="#c2d3e4"/>
+    <circle cx="803" cy="262" r="16" fill="#b9cee2"/>
+    <circle cx="820" cy="256" r="9" fill="#c9dbec"/>
+    <text x="758" y="352" font-family="Consolas, monospace" font-size="11" fill="#6b7d92">rendered page</text>
+    <rect x="758" y="366" width="140" height="8" rx="4" fill="#e2ebf4"/>
+    <rect x="758" y="382" width="110" height="8" rx="4" fill="#e2ebf4"/>
+    <rect x="758" y="398" width="128" height="8" rx="4" fill="#e2ebf4"/>
+  </g>
+
+  <text x="42" y="512" font-family="Segoe UI, sans-serif" font-size="15" fill="#93a3b8">Same text, three states: the code you write, what the browser does with it, and what the visitor sees.</text>
+</svg>

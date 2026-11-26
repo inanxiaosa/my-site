@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Tianze Tang — a Digital Services student in Chengdu, what I am learning in the course, and how this website was built.">
+  <meta name="author" content="Tianze Tang">
+  <title>About — Tianze Tang</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">TT</span>
+        <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+      </a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="html.html">HTML notes</a></li>
+        <li><a href="css.html">CSS notes</a></li>
+        <li><a href="practice.html">Practice</a></li>
+        <li><a href="validation.html">Validation</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="wrap hero" style="padding-bottom:10px;">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>About me</span>
+        <h1>I am Tianze Tang,<br>studying Digital Services in <span class="grad">Chengdu</span>.</h1>
+        <p class="lede">
+          This website is coursework, but it is also the first time I built something a stranger can
+          open in a browser. It started with the question “what is HTML” and ended with six pages and a
+          URL.
+        </p>
+      </div>
+      <div class="card-preview">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>facts</span></div>
+        <div class="body">
+          <div class="avatar" aria-hidden="true">TT</div>
+          <h2>Tianze Tang</h2>
+          <p>Student · Digital Services</p>
+          <dl>
+            <dt>Based in</dt><dd>Chengdu, China</dd>
+            <dt>Course</dt><dd>Introduction to Digital Services</dd>
+            <dt>Code</dt><dd>DIG001IT1AE-3033</dd>
+            <dt>Right now</dt><dd>Learning HTML and CSS</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">Why this subject</span>
+        <h2>Digital services is not just “using software”</h2>
+      </div>
+      <div class="prose" style="max-width:70ch;">
+        <p>
+          When I chose the subject I assumed it was about getting good at tools. A few weeks in, the
+          point turned out to be different: understanding <strong>how a service is put together</strong>
+          — who uses it, in what situation, and exactly where the page makes them stop.
+        </p>
+        <p>
+          HTML and CSS are the bottom layer of that. Before, I opened a website and thought “nice” or
+          “ugly”. Now I catch myself asking: is that three-column block Grid or Flex? What happens at
+          phone width? Why is the menu at the top instead of the side?
+        </p>
+        <p>
+          So I did not use a site builder or a template for this task. Every tag here was typed by me,
+          and every mistake was found by me. That process matters more than the result — at least now I
+          know where to look when a page does not work.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">Where I am now</span>
+        <h2>Skills, honestly rated</h2>
+        <p>Self-assessment against the course topics, not wishful thinking.</p>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="live">
+          <div class="skill">
+            <div class="top"><span>HTML structure</span><span>85%</span></div>
+            <div class="progress"><span style="width:85%;"></span></div>
+          </div>
+          <div class="skill">
+            <div class="top"><span>CSS colour and typography</span><span>75%</span></div>
+            <div class="progress"><span style="width:75%;animation-delay:.1s;"></span></div>
+          </div>
+          <div class="skill">
+            <div class="top"><span>Flex and Grid layout</span><span>65%</span></div>
+            <div class="progress"><span style="width:65%;animation-delay:.2s;"></span></div>
+          </div>
+          <div class="skill" style="margin-bottom:0;">
+            <div class="top"><span>Responsive design</span><span>60%</span></div>
+            <div class="progress"><span style="width:60%;animation-delay:.3s;"></span></div>
+          </div>
+        </div>
+
+        <div class="live">
+          <div class="demo-label">What I want to learn next</div>
+          <ul class="tight">
+            <li>JavaScript — so a page can actually calculate, store and search</li>
+            <li>Accessibility — how a screen reader walks through a page</li>
+            <li>Forms and back ends — where submitted data really goes</li>
+            <li>Design basics — spacing, hierarchy, whitespace</li>
+          </ul>
+          <p class="hint">All of it after HTML and CSS. Foundations first.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">The process</span>
+        <h2>How this site grew</h2>
+      </div>
+
+      <figure>
+        <img src="images/learning-path.svg" alt="A path with nine numbered stops: HTML, headings, CSS, colour, elements, images, responsive, validation and comments.">
+        <figcaption>Figure 1: the nine study steps of the course section. The six steps described below are how I actually worked through them.</figcaption>
+      </figure>
+
+      <ol class="timeline">
+        <li data-step="1">
+          <h3>Read the material first</h3>
+          <p>HTML introduction, the CSS demonstrations, the responsive section — page by page, copying code into a scratch file as I went.</p>
+        </li>
+        <li data-step="2">
+          <h3>Build the ugliest possible version</h3>
+          <p>Black text on white, one heading, one paragraph, three links. Ugly but it opened. That step only proved the file worked in a browser.</p>
+        </li>
+        <li data-step="3">
+          <h3>Split it into six files</h3>
+          <p>Once the notes got long, one page was not enough. Notes, about and practice became separate files, joined by one navigation bar.</p>
+        </li>
+        <li data-step="4">
+          <h3>Move the styles out</h3>
+          <p>Everything went into <code>css/style.css</code> and was linked in. After that, recolouring the site was a single edit.</p>
+        </li>
+        <li data-step="5">
+          <h3>Deal with phones</h3>
+          <p>Added the viewport tag and two media queries: three columns to one, navigation allowed to wrap.</p>
+        </li>
+        <li data-step="6">
+          <h3>Publish</h3>
+          <p>Pushed to a GitHub repository, switched Pages on, waited a minute. Seeing my own URL work for the first time was genuinely satisfying.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">About this website</span>
+        <h2>What is in it, and what is not</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Technical summary</caption>
+          <thead><tr><th scope="col">Item</th><th scope="col">Detail</th></tr></thead>
+          <tbody>
+            <tr><td>HTML</td><td>6 pages, hand-written, semantic elements preferred</td></tr>
+            <tr><td>CSS</td><td>1 external stylesheet, custom properties, two breakpoints</td></tr>
+            <tr><td>JavaScript</td><td>0 lines — the task does not ask for it</td></tr>
+            <tr><td>Frameworks or templates</td><td>None</td></tr>
+            <tr><td>Images</td><td>3 SVGs drawn for this project, no stock library</td></tr>
+            <tr><td>Fonts</td><td>System fonts only, nothing downloaded</td></tr>
+            <tr><td>Hosting</td><td>GitHub Pages</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="demo">
+        <div>
+          <span class="kicker">Keep reading</span>
+          <h2 style="font-size:1.3rem;">Start with the notes</h2>
+          <p class="hint">If you only read one page, make it the HTML notes — that is the foundation everything else stands on.</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn-primary" href="html.html">HTML notes →</a>
+          <a class="btn" href="contact.html">Contact me</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:12px;">
+          <span class="brand-mark" aria-hidden="true">TT</span>
+          <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+        </a>
+        <p>Coursework for Introduction to Digital Services (DIG001IT1AE-3033), hand-written in HTML and CSS.</p>
+      </div>
+      <div>
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="html.html">HTML notes</a></li>
+          <li><a href="css.html">CSS notes</a></li>
+          <li><a href="practice.html">Practice</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>About</h2>
+        <ul>
+          <li>Author: Tianze Tang</li>
+          <li>Course: Digital Services</li>
+          <li>Location: Chengdu, China</li>
+          <li><a href="#main">Back to top ↑</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Tianze Tang · Personal website</span>
+      <span>HTML + CSS. No JavaScript.</span>
+    </div>
+  </footer>
+</body>
+</html>

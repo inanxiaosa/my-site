@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" width="900" height="430" role="img" aria-labelledby="p1 p2">
+  <title id="p1">The nine study steps of the course section</title>
+  <desc id="p2">A path with nine numbered stops, from studying HTML through styling, images, responsiveness, validation and commenting the code.</desc>
+  <defs>
+    <linearGradient id="path" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5ce6b4"/>
+      <stop offset="1" stop-color="#7aa7ff"/>
+    </linearGradient>
+    <style>
+      .step { font-family: "Segoe UI", Arial, sans-serif; font-size: 14px; fill: #e9eff7; }
+      .num { font-family: Consolas, monospace; font-size: 15px; font-weight: 700; fill: #06121a; }
+      .small { font-family: Consolas, monospace; font-size: 12px; fill: #93a3b8; }
+    </style>
+  </defs>
+
+  <rect width="900" height="430" fill="#0b1219"/>
+
+  <!-- the road -->
+  <path d="M60 240 C160 240 160 120 260 120 C360 120 360 240 460 240 C560 240 560 120 660 120 C760 120 760 240 840 240"
+        fill="none" stroke="url(#path)" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+
+  <g>
+    <!-- 1 -->
+    <circle cx="90" cy="240" r="22" fill="#5ce6b4"/>
+    <text class="num" x="90" y="246" text-anchor="middle">1</text>
+    <text class="step" x="90" y="196" text-anchor="middle">HTML</text>
+    <text class="small" x="90" y="290" text-anchor="middle">study</text>
+    <!-- 2 -->
+    <circle cx="215" cy="240" r="22" fill="#5ce6b4"/>
+    <text class="num" x="215" y="246" text-anchor="middle">2</text>
+    <text class="step" x="215" y="290" text-anchor="middle">headings</text>
+    <text class="small" x="215" y="312" text-anchor="middle">do</text>
+    <!-- 3 -->
+    <circle cx="305" cy="120" r="22" fill="#4fd7b0"/>
+    <text class="num" x="305" y="126" text-anchor="middle">3</text>
+    <text class="step" x="305" y="76" text-anchor="middle">CSS</text>
+    <text class="small" x="305" y="170" text-anchor="middle">study</text>
+    <!-- 4 -->
+    <circle cx="400" cy="240" r="22" fill="#43c9ab"/>
+    <text class="num" x="400" y="246" text-anchor="middle">4</text>
+    <text class="step" x="400" y="290" text-anchor="middle">colour</text>
+    <text class="small" x="400" y="312" text-anchor="middle">do</text>
+    <!-- 5 -->
+    <circle cx="490" cy="240" r="22" fill="#4fb2bd"/>
+    <text class="num" x="490" y="246" text-anchor="middle">5</text>
+    <text class="step" x="490" y="290" text-anchor="middle">elements</text>
+    <text class="small" x="490" y="312" text-anchor="middle">study</text>
+    <!-- 6 -->
+    <circle cx="580" cy="120" r="22" fill="#5b9fc9"/>
+    <text class="num" x="580" y="126" text-anchor="middle">6</text>
+    <text class="step" x="580" y="76" text-anchor="middle">images</text>
+    <text class="small" x="580" y="170" text-anchor="middle">do</text>
+    <!-- 7 -->
+    <circle cx="676" cy="240" r="22" fill="#6d92d4"/>
+    <text class="num" x="676" y="246" text-anchor="middle">7</text>
+    <text class="step" x="676" y="290" text-anchor="middle">responsive</text>
+    <text class="small" x="676" y="312" text-anchor="middle">do</text>
+    <!-- 8 -->
+    <circle cx="770" cy="120" r="22" fill="#7aa7ff"/>
+    <text class="num" x="770" y="126" text-anchor="middle">8</text>
+    <text class="step" x="770" y="76" text-anchor="middle">validation</text>
+    <text class="small" x="770" y="170" text-anchor="middle">study + do</text>
+    <!-- 9 -->
+    <circle cx="852" cy="240" r="22" fill="#9dc0ff"/>
+    <text class="num" x="852" y="246" text-anchor="middle">9</text>
+    <text class="step" x="852" y="290" text-anchor="middle">comments</text>
+    <text class="small" x="852" y="312" text-anchor="middle">study + do</text>
+  </g>
+
+  <text x="60" y="380" class="small">every step is evidence for the assignment: notes in the text, proof in the code</text>
+</svg>

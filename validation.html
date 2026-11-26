@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Validation, testing and accessibility report for this website: W3C HTML validation results, a link check, keyboard and screen-reader checks, responsive tests, file sizes, and how the code is commented.">
+  <meta name="author" content="Tianze Tang">
+  <title>Validation and testing — Tianze Tang</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">TT</span>
+        <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+      </a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="html.html">HTML notes</a></li>
+        <li><a href="css.html">CSS notes</a></li>
+        <li><a href="practice.html">Practice</a></li>
+        <li><a href="validation.html" aria-current="page">Validation</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="wrap" style="padding-top:34px;">
+      <span class="eyebrow"><span class="dot"></span>Step 8 and 9 · testing, accessibility, comments</span>
+      <h1>Validation: <span class="grad">what I checked, and what it found</span></h1>
+      <p class="lede">
+        “It looks fine in my browser” is not a test. This page is the evidence: the files were sent
+        through the W3C validator, every link was checked, the layout was measured at five widths, and
+        the keyboard was used instead of the mouse. Below are the actual results, including the mistakes
+        the validator caught and what I changed.
+      </p>
+    </section>
+
+    <!-- ===== 8. validation ===== -->
+    <section class="wrap section" id="validator">
+      <div class="sec-head">
+        <span class="kicker">8 · validation</span>
+        <h2>W3C HTML validator</h2>
+        <p>
+          Each page was sent to <a href="https://validator.w3.org/nu/" target="_blank" rel="noopener noreferrer">validator.w3.org/nu</a>
+          as source text, exactly as it is in this repository. The table shows the final run.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Final validation run — all pages of this site</caption>
+          <thead>
+            <tr><th scope="col">Page</th><th scope="col">Errors</th><th scope="col">Warnings / info</th><th scope="col">Result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>index.html</code></td><td>0</td><td>0</td><td><span class="pill ok">valid</span></td></tr>
+            <tr><td><code>about.html</code></td><td>0</td><td>0</td><td><span class="pill ok">valid</span></td></tr>
+            <tr><td><code>html.html</code></td><td>0</td><td>0</td><td><span class="pill ok">valid</span></td></tr>
+            <tr><td><code>css.html</code></td><td>0</td><td>0</td><td><span class="pill ok">valid</span></td></tr>
+            <tr><td><code>practice.html</code></td><td>0</td><td>0</td><td><span class="pill ok">valid</span></td></tr>
+            <tr><td><code>contact.html</code></td><td>0</td><td>0</td><td><span class="pill ok">valid</span></td></tr>
+            <tr><td><code>validation.html</code></td><td>0</td><td>0</td><td><span class="pill ok">valid</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:24px;">What the validator caught the first time</h3>
+      <p>Three real problems, all of them the same family: heading levels that skipped a step.</p>
+
+      <ol class="timeline">
+        <li data-step="1">
+          <h3>A <code>h3</code> straight after the page <code>h1</code></h3>
+          <p>
+            The profile card in the hero used <code>&lt;h3&gt;</code> for my name, so the outline jumped
+            from level 1 to level 3. Fixed by making it an <code>h2</code> — the card is a section of the
+            page, not a subsection of nothing.
+          </p>
+        </li>
+        <li data-step="2">
+          <h3><code>h4</code> in the footer after an <code>h2</code></h3>
+          <p>
+            The footer column titles (“Pages”, “About”) were <code>h4</code>, which skipped level 3.
+            They are now <code>h2</code> inside the footer, and the small uppercase look comes from CSS,
+            not from the heading level.
+          </p>
+        </li>
+        <li data-step="3">
+          <h3><code>article</code> and <code>section</code> without a heading</h3>
+          <p>
+            The notes pages wrapped everything in an <code>article</code> whose headings live inside the
+            child <code>section</code> elements, and the contents block was a <code>section</code> with
+            only a <code>nav</code> inside. Both were changed to plain <code>div</code>: if there is no
+            heading, the element is not a section.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== links ===== -->
+    <section class="wrap section" id="links">
+      <div class="sec-head">
+        <span class="kicker">8 · links</span>
+        <h2>Link check</h2>
+        <p>
+          A small script read every <code>href</code> and <code>src</code> in the six original pages and
+          asked two questions: does the target file exist, and does the anchor it points to exist?
+        </p>
+      </div>
+
+      <div class="grid cols-3">
+        <div class="live">
+          <div class="demo-label">Internal pages</div>
+          <p style="font-size:1.5rem;font-weight:700;margin:0;">0 broken</p>
+          <p class="hint">every <code>href="about.html"</code> resolves</p>
+        </div>
+        <div class="live">
+          <div class="demo-label">Page anchors</div>
+          <p style="font-size:1.5rem;font-weight:700;margin:0;">0 broken</p>
+          <p class="hint">every <code>#section</code> has a matching <code>id</code></p>
+        </div>
+        <div class="live">
+          <div class="demo-label">Images and CSS</div>
+          <p style="font-size:1.5rem;font-weight:700;margin:0;">0 missing</p>
+          <p class="hint">all <code>src</code> and the stylesheet load</p>
+        </div>
+      </div>
+
+      <p class="hint" style="margin-top:14px;">
+        Re-run it yourself: open the page, hover a link and read the status bar, or use the browser's
+        own “view source” to confirm the path. A path written inside <code>style.css</code> is relative
+        to the stylesheet, which is why the pattern image uses <code>../images/pattern.svg</code>.
+      </p>
+    </section>
+
+    <!-- ===== accessibility ===== -->
+    <section class="wrap section" id="accessibility">
+      <div class="sec-head">
+        <span class="kicker">8 · accessibility</span>
+        <h2>Accessibility checks</h2>
+        <p>
+          The course material points at the <abbr title="World Wide Web Consortium">W3C</abbr> “Easy
+          Checks”. These are the ones this site passes, and how.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Easy checks, and where they are implemented</caption>
+          <thead>
+            <tr><th scope="col">Check</th><th scope="col">How this site does it</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Page has a title</td>
+              <td>Every page has its own <code>&lt;title&gt;</code>; the tab never says “untitled”.</td>
+            </tr>
+            <tr>
+              <td>Page language declared</td>
+              <td><code>&lt;html lang="en"&gt;</code> on all seven pages.</td>
+            </tr>
+            <tr>
+              <td>Headings convey structure</td>
+              <td>One <code>h1</code>, no skipped levels — that is exactly what the validator enforced.</td>
+            </tr>
+            <tr>
+              <td>Images have text alternatives</td>
+              <td>Every <code>&lt;img&gt;</code> has a descriptive <code>alt</code>; decorative shapes are CSS, not images.</td>
+            </tr>
+            <tr>
+              <td>Keyboard access</td>
+              <td>The first Tab stops on a “Skip to content” link; every link and form field is reachable without a mouse.</td>
+            </tr>
+            <tr>
+              <td>Visible focus</td>
+              <td><code>:focus-visible</code> draws a dashed outline in the accent colour, so you can see where you are.</td>
+            </tr>
+            <tr>
+              <td>Current page marked</td>
+              <td><code>aria-current="page"</code> on the active menu item, and the navigation has <code>aria-label="Main navigation"</code>.</td>
+            </tr>
+            <tr>
+              <td>Contrast</td>
+              <td>Body text is near-white on a near-black background; the accent colour is only used for large text, borders and links.</td>
+            </tr>
+            <tr>
+              <td>Motion</td>
+              <td><code>@media (prefers-reduced-motion: reduce)</code> reduces transitions to almost nothing.</td>
+            </tr>
+            <tr>
+              <td>Colour scheme</td>
+              <td><code>@media (prefers-color-scheme: light)</code> re-assigns the variables, so the site follows the operating system.</td>
+            </tr>
+            <tr>
+              <td>Table markup</td>
+              <td>Tables use <code>caption</code>, <code>thead</code> and <code>th scope</code>, so a screen reader can announce the column.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="hint">
+        How I tested it: pressed Tab from the top of each page and noted the order, then zoomed the
+        browser to 200 % and checked that nothing overlapped or disappeared.
+      </p>
+    </section>
+
+    <!-- ===== responsive + size ===== -->
+    <section class="wrap section" id="responsive-test">
+      <div class="sec-head">
+        <span class="kicker">8 · testing</span>
+        <h2>Responsive and size tests</h2>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="live">
+          <div class="demo-label">Widths tested</div>
+          <ul class="tight">
+            <li>1440 px — three columns, wide margins</li>
+            <li>1024 px — still three columns</li>
+            <li>940 px — breakpoint: two columns, profile card moves up</li>
+            <li>768 px — two columns, smaller type</li>
+            <li>700 px — breakpoint: one column, navigation wraps</li>
+            <li>390 px and 360 px — one column, no horizontal scrollbar</li>
+          </ul>
+        </div>
+        <div class="live">
+          <div class="demo-label">Weight of the whole site</div>
+          <ul class="tight">
+            <li>HTML, 7 pages — 84.5 kB</li>
+            <li>CSS, 1 stylesheet — 21.9 kB</li>
+            <li>Images, 6 SVG files — 21.6 kB</li>
+            <li><strong>Total — 128 kB</strong>, no fonts, no libraries</li>
+          </ul>
+          <p class="hint">The task suggests roughly 300–400 kB for media; this site is a fifth of that because the pictures are vectors.</p>
+        </div>
+      </div>
+
+      <figure style="margin-top:20px;">
+        <img src="images/figure-responsive.svg" alt="Three frames side by side: desktop with three columns, tablet with two, phone with one stacked column.">
+        <figcaption>Figure 1: the layout at 1440, 768 and 390 pixels — the same HTML file, two media queries.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ===== 9. comments ===== -->
+    <section class="wrap section" id="comments">
+      <div class="sec-head">
+        <span class="kicker">9 · comments</span>
+        <h2>How the code is commented</h2>
+        <p>
+          The last study step asks for commented code. The rule I follow: a comment explains
+          <em>why</em>, never <em>what the tag is</em>. Anyone can see that <code>&lt;h2&gt;</code> is a
+          heading; what is useful is knowing which part of the page it opens.
+        </p>
+      </div>
+
+      <div class="demo">
+        <div>
+          <div class="demo-label">HTML — a marker above each region</div>
+          <div class="code">
+<pre>&lt;!-- ===== Hero ===== --&gt;
+&lt;section class="wrap hero"&gt;
+  &lt;h1&gt;…&lt;/h1&gt;
+
+  &lt;!-- The card on the right is built
+       entirely with HTML and CSS --&gt;
+  &lt;div class="card-preview"&gt;…&lt;/div&gt;
+&lt;/section&gt;</pre>
+          </div>
+        </div>
+        <div>
+          <div class="demo-label">CSS — numbered sections, one idea each</div>
+          <div class="code">
+<pre>/* ---------- 4. Header and navigation ---------- */
+.nav {
+  display: flex;
+  flex-wrap: wrap;   /* wraps instead of overflowing */
+  gap: 10px 18px;
+}
+
+/* The current page is marked with aria-current,
+   an HTML attribute, so no script is needed */
+.nav ul a[aria-current="page"] { … }</pre>
+          </div>
+        </div>
+      </div>
+
+      <ul class="tight">
+        <li>Every HTML file starts with a comment naming the page, and each major region has a marker.</li>
+        <li><code>style.css</code> opens with a table of contents of its 15 numbered sections, then each section begins with the same heading.</li>
+        <li>Explanatory comments sit next to the tricky lines: <code>minmax(0, 1fr)</code>, the <code>:target</code> tab trick, the relative path in a background image.</li>
+        <li>No commented-out code is left behind: dead CSS was deleted, not hidden.</li>
+      </ul>
+
+      <p class="hint">
+        To see it, open any page and press <kbd>Ctrl</kbd> + <kbd>U</kbd> (view source) or open
+        <code>css/style.css</code> in the repository.
+      </p>
+    </section>
+
+    <!-- ===== summary ===== -->
+    <section class="wrap section">
+      <div class="sec-head">
+        <span class="kicker">Summary</span>
+        <h2>The checklist I gave myself</h2>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Requirements for the website, and the evidence</caption>
+          <thead><tr><th scope="col">Requirement</th><th scope="col">Evidence</th></tr></thead>
+          <tbody>
+            <tr><td>Scope: at least 3 pages</td><td>7 pages: home, about, two note pages, practice, validation, contact</td></tr>
+            <tr><td>Semantic structure</td><td><code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>figure</code>, <code>footer</code></td></tr>
+            <tr><td>Table, list, buttons</td><td>Four tables with captions, three kinds of list, real <code>&lt;button&gt;</code> elements in the practice and contact forms</td></tr>
+            <tr><td>Images on every page</td><td>Six SVG figures, at least one on each page</td></tr>
+            <tr><td>Navigation</td><td>Same bar on seven pages, current page marked, all links checked</td></tr>
+            <tr><td>Optimised media</td><td>22 kB of images in total; no bitmap at full camera size</td></tr>
+            <tr><td>Responsive design</td><td>Two media queries; tested from 360 px to 1440 px</td></tr>
+            <tr><td>Accessibility</td><td>Skip link, focus rings, <code>alt</code>, <code>aria-current</code>, reduced motion</td></tr>
+            <tr><td>Separate stylesheet</td><td><code>css/style.css</code>, linked from every page; no inline blocks</td></tr>
+            <tr><td>Valid HTML5</td><td>0 errors in the W3C validator on all seven pages</td></tr>
+            <tr><td>No JavaScript</td><td>0 lines; tabs, accordions and animation are HTML and CSS</td></tr>
+            <tr><td>Commented code</td><td>Region markers in HTML, 15 numbered sections in CSS</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="demo" style="margin-top:22px;">
+        <div>
+          <span class="kicker">Done testing</span>
+          <h2 style="font-size:1.3rem;">Back to the site</h2>
+          <p class="hint">The notes explain the rules; this page shows the checks. The practice page shows the results.</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn-primary" href="practice.html">Practice page →</a>
+          <a class="btn" href="index.html">Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:12px;">
+          <span class="brand-mark" aria-hidden="true">TT</span>
+          <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+        </a>
+        <p>Coursework for Introduction to Digital Services (DIG001IT1AE-3033), hand-written in HTML and CSS.</p>
+      </div>
+      <div>
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="html.html">HTML notes</a></li>
+          <li><a href="css.html">CSS notes</a></li>
+          <li><a href="practice.html">Practice</a></li>
+          <li><a href="validation.html">Validation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>About</h2>
+        <ul>
+          <li>Author: Tianze Tang</li>
+          <li>Course: Digital Services</li>
+          <li>Location: Chengdu, China</li>
+          <li><a href="#main">Back to top ↑</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Tianze Tang · Personal website</span>
+      <span>HTML + CSS. No JavaScript.</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="My CSS self-study notes: what CSS is, three ways to include it, selectors, cascade and inheritance, the box model, colour and background, typography, Flex and Grid, responsive design, transitions and custom properties.">
+  <meta name="author" content="Tianze Tang">
+  <title>CSS notes — Tianze Tang</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">TT</span>
+        <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+      </a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="html.html">HTML notes</a></li>
+        <li><a href="css.html" aria-current="page">CSS notes</a></li>
+        <li><a href="practice.html">Practice</a></li>
+        <li><a href="validation.html">Validation</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="wrap" style="padding-top:34px;">
+      <span class="eyebrow"><span class="dot"></span>Self study · CSS</span>
+      <h1>CSS notes: <span class="grad">making it readable</span></h1>
+      <p class="lede">
+        HTML is the structure; CSS is the look. These are the rules I learned in the course, and where
+        the colours, spacing and layout of this site come from.
+      </p>
+    </section>
+
+    <div class="wrap">
+      <nav class="toc" aria-label="On this page">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#what-is-css">What CSS is</a></li>
+          <li><a href="#ways">Three ways to include it</a></li>
+          <li><a href="#selectors">Selectors</a></li>
+          <li><a href="#cascade">Cascade and inheritance</a></li>
+          <li><a href="#box">The box model</a></li>
+          <li><a href="#color">Colour and background</a></li>
+          <li><a href="#font">Typography</a></li>
+          <li><a href="#layout">Flex and Grid</a></li>
+          <li><a href="#responsive">Responsive design</a></li>
+          <li><a href="#motion">Transitions and animation</a></li>
+          <li><a href="#variables">Custom properties</a></li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="wrap note">
+      <!-- ===== 1 ===== -->
+      <section id="what-is-css" class="section">
+        <span class="kicker">Section 1</span>
+        <h2>What CSS is</h2>
+        <p>
+          CSS is Cascading Style Sheets. It is a list of rules, and every rule is
+          <strong>a selector, a pair of braces, and one or more declarations of the form
+          “property: value”</strong>.
+        </p>
+        <div class="code"><span>one rule</span>
+<pre>h1 {
+  color: blue;       /* property: value; */
+  font-size: 2rem;
+}</pre>
+        </div>
+        <p>
+          <code>h1</code> is the selector — “every h1 element on the page”. The braces hold the
+          declarations, each one ending in a semicolon. Change that <code>color</code> and the main
+          heading of all six pages changes, because they are all the same kind of element.
+        </p>
+      </section>
+
+      <!-- ===== 2 ===== -->
+      <section id="ways" class="section">
+        <span class="kicker">Section 2</span>
+        <h2>Three ways to include it</h2>
+        <div class="table-wrap">
+          <table>
+            <caption>Where CSS can live</caption>
+            <thead><tr><th scope="col">Way</th><th scope="col">Example</th><th scope="col">When to use it</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>External stylesheet</td>
+                <td><code>&lt;link rel="stylesheet" href="css/style.css"&gt;</code></td>
+                <td>Every real site: change once, applies everywhere</td>
+              </tr>
+              <tr>
+                <td>Internal block</td>
+                <td><code>&lt;style&gt; … &lt;/style&gt;</code> in the head</td>
+                <td>Only this page, usually for a quick test</td>
+              </tr>
+              <tr>
+                <td>Inline style</td>
+                <td><code>&lt;p style="color: red;"&gt;</code></td>
+                <td>Only that element; highest priority; avoid</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          This site only uses the first one: all styling lives in <code>css/style.css</code>.
+          I use an inline style in a couple of demos, purely to show how it outranks a class.
+        </p>
+      </section>
+
+      <!-- ===== 3 ===== -->
+      <section id="selectors" class="section">
+        <span class="kicker">Section 3</span>
+        <h2>Selectors</h2>
+        <p>A selector decides who a rule applies to. Five kinds cover almost everything:</p>
+
+        <div class="code"><span>css/style.css, excerpts</span>
+<pre>/* 1. element: every paragraph */
+p { line-height: 1.75; }
+
+/* 2. class: reusable, written with a dot */
+.card { border-radius: 14px; }
+
+/* 3. id: one element per page, written with a hash */
+#main { padding-block: 40px; }
+
+/* 4. descendant: links inside .nav */
+.nav a { padding: 8px 12px; }
+
+/* 5. pseudo-class and attribute */
+.nav a:hover { color: #5ce6b4; }
+.nav a[aria-current="page"] { background: #5ce6b4; }</pre>
+        </div>
+
+        <div class="demo">
+          <div>
+            <div class="demo-label">Result</div>
+            <div class="live">
+              <p style="margin:0 0 8px;">A normal paragraph — line height comes from the element selector.</p>
+              <p class="pill ok" style="display:inline-block;">a class: .pill</p>
+              <p style="margin:12px 0 0;"><a href="#selectors">Links get their hover colour from a pseudo-class</a></p>
+            </div>
+          </div>
+          <div>
+            <div class="demo-label">Things to remember</div>
+            <div class="live prose">
+              <ul class="tight">
+                <li>A class is written <code>.card</code>, an id <code>#main</code>.</li>
+                <li>A class can repeat; an id appears once per page.</li>
+                <li>Shorter selectors age better — <code>div &gt; ul &gt; li &gt; a</code> breaks the moment the markup changes.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 4 ===== -->
+      <section id="cascade" class="section">
+        <span class="kicker">Section 4</span>
+        <h2>Cascade and inheritance</h2>
+        <p>
+          “Cascading” means: when several rules hit the same element, the browser picks one.
+          Roughly <strong>inline &gt; id &gt; class &gt; element</strong>; at equal weight, the rule
+          written last wins.
+        </p>
+        <p>
+          “Inheritance” means some properties pass down to children by themselves. Set
+          <code>font-family</code> on <code>body</code> and all the text follows. Set
+          <code>border</code> or <code>padding</code> and nothing follows — box properties do not inherit.
+        </p>
+        <details>
+          <summary>Mistake I made: the rule was there but nothing changed</summary>
+          <p>
+            Almost always a specificity problem: a later, more specific rule was overriding mine, or a
+            missing semicolon swallowed the declaration. The quickest diagnosis is to comment the
+            suspect rule out and reload — if the page does not change, that rule was not in charge.
+          </p>
+        </details>
+      </section>
+
+      <!-- ===== 5 ===== -->
+      <section id="box" class="section">
+        <span class="kicker">Section 5</span>
+        <h2>The box model</h2>
+        <p>
+          Every element is a box, four layers from the inside out:
+          <strong>content → padding → border → margin</strong>.
+        </p>
+        <div class="live" style="margin-block:16px;">
+          <div style="border:1px dashed var(--line);padding:10px;border-radius:8px;">
+            margin (space between boxes)
+            <div style="border:2px solid var(--accent);padding:10px;border-radius:6px;margin-top:8px;">
+              border
+              <div style="background:color-mix(in srgb, var(--accent) 16%, transparent);padding:12px;border-radius:4px;margin-top:8px;">
+                padding (space inside the border)
+                <div style="background:var(--surface-3);padding:10px;border-radius:4px;margin-top:8px;">
+                  content
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p>
+          By default <code>width</code> counts the content only, so padding and border make the box
+          wider than asked. That is why the first rule in my stylesheet is:
+        </p>
+        <div class="code"><span>css/style.css, first rule</span>
+<pre>*,
+*::before,
+*::after { box-sizing: border-box; }</pre>
+        </div>
+        <p>
+          With <code>border-box</code>, <code>width</code> includes padding and border, so layout
+          arithmetic stops needing a calculator.
+        </p>
+      </section>
+
+      <!-- ===== 6 ===== -->
+      <section id="color" class="section">
+        <span class="kicker">Section 6</span>
+        <h2>Colour and background</h2>
+        <p>There are several ways to write a colour: <code>#5ce6b4</code>, <code>rgb(92 230 180)</code>, <code>hsl(160 76% 63%)</code>, or a keyword such as <code>white</code>.</p>
+
+        <div class="grid cols-3">
+          <div class="live" style="background:#5ce6b4;color:#04121b;font-family:var(--mono);font-size:.8rem;">#5ce6b4</div>
+          <div class="live" style="background:#7aa7ff;color:#04121b;font-family:var(--mono);font-size:.8rem;">#7aa7ff</div>
+          <div class="live" style="background:#ffc45c;color:#04121b;font-family:var(--mono);font-size:.8rem;">#ffc45c</div>
+        </div>
+
+        <p style="margin-top:16px;">A background can also be a gradient or an image:</p>
+        <div class="code"><span>two kinds of background</span>
+<pre>/* a gradient */
+.hero {
+  background: linear-gradient(120deg, #5ce6b4, #7aa7ff);
+}
+
+/* an image, tiled */
+.pattern {
+  background-image: url("../images/pattern.svg");
+  background-size: 46px 46px;
+  background-repeat: repeat;
+}</pre>
+        </div>
+        <p class="hint">
+          Note the path: a URL written inside <code>style.css</code> is relative to the
+          <strong>stylesheet</strong>, not to the page. So <code>css/</code> has to climb one level:
+          <code>../images/pattern.svg</code>. I marked this again on the practice page.
+        </p>
+      </section>
+
+      <!-- ===== 7 ===== -->
+      <section id="font" class="section">
+        <span class="kicker">Section 7</span>
+        <h2>Typography</h2>
+        <div class="code"><span>text on the whole page</span>
+<pre>body {
+  font-family: "Segoe UI", "Microsoft YaHei",
+               "PingFang SC", system-ui, sans-serif;
+  line-height: 1.75;
+  font-size: 16px;
+}</pre>
+        </div>
+        <ul class="tight">
+          <li><strong>A font stack</strong> is a wish list, with <code>sans-serif</code> as the last resort.</li>
+          <li><strong>Latin font first, CJK font second</strong> gives good Latin letters and correct Chinese characters from the same stack.</li>
+          <li><strong>Line height</strong> 1.6–1.8 for body text; headings can be tighter.</li>
+          <li><strong>Sizes in rem</strong> respect the visitor's browser setting, pixels do not.</li>
+        </ul>
+      </section>
+
+      <!-- ===== 8 ===== -->
+      <section id="layout" class="section">
+        <span class="kicker">Section 8</span>
+        <h2>Flex and Grid</h2>
+        <p>Two layout tools, one sentence apart: <strong>Flex arranges a line (one dimension), Grid arranges an area (two dimensions).</strong></p>
+
+        <h3>Flex: the navigation bar</h3>
+        <div class="code"><span>why the menu is horizontal</span>
+<pre>.nav {
+  display: flex;
+  align-items: center;      /* vertical centring */
+  flex-wrap: wrap;          /* wrap when it runs out of room */
+  gap: 10px 18px;           /* row gap / column gap */
+}
+.brand { margin-right: auto; }  /* brand left, links right */</pre>
+        </div>
+
+        <h3>Grid: three cards in a row</h3>
+        <div class="code"><span>the cards on the home page</span>
+<pre>.grid { display: grid; gap: 18px; }
+.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}</pre>
+        </div>
+        <p>
+          <code>1fr</code> means “one share of the free space”, so three shares are three equal
+          columns. The <code>minmax(0, 1fr)</code> instead of plain <code>1fr</code> stops long code
+          from pushing a column wider than its share — a detail I only found when writing the notes pages.
+        </p>
+      </section>
+
+      <!-- ===== 9 ===== -->
+      <section id="responsive" class="section">
+        <span class="kicker">Section 9</span>
+        <h2>Responsive design</h2>
+        <p>Responsive means one HTML file that works on every screen. Three ingredients: the viewport tag, relative units, and media queries.</p>
+        <div class="code"><span>the two breakpoints of this site</span>
+<pre>/* tablet: three columns become two, card moves above */
+@media (max-width: 940px) {
+  .cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero { grid-template-columns: 1fr; }
+  .card-preview { order: -1; }
+}
+
+/* phone: everything one column */
+@media (max-width: 700px) {
+  .cols-2, .cols-3, .gallery { grid-template-columns: 1fr; }
+  .nav ul a { padding: 7px 10px; font-size: .86rem; }
+}</pre>
+        </div>
+
+        <figure>
+          <img src="images/figure-responsive.svg" alt="Diagram: the same page at desktop, tablet and phone width, showing three columns, two columns and one stacked column.">
+          <figcaption>Figure 2: one HTML file at 1440px, 768px and 390px.</figcaption>
+        </figure>
+        <p class="hint">How to check: drag the window narrower and watch for a horizontal scrollbar or text escaping its box.</p>
+      </section>
+
+      <!-- ===== 10 ===== -->
+      <section id="motion" class="section">
+        <span class="kicker">Section 10</span>
+        <h2>Transitions and animation</h2>
+        <p>
+          <code>transition</code> animates a change of state; <code>animation</code> with
+          <code>@keyframes</code> runs something on its own. This site uses both:
+        </p>
+        <div class="code"><span>transition on hover, animation on load</span>
+<pre>.card { transition: transform .18s, box-shadow .18s; }
+.card:hover { transform: translateY(-3px); }
+
+.progress &gt; span {
+  animation: grow 1.4s ease-out both;
+}
+@keyframes grow { from { width: 0; } }</pre>
+        </div>
+        <p>
+          I also added <code>@media (prefers-reduced-motion: reduce)</code>, which drops animation to
+          almost zero if the visitor asked the system for less motion. Three lines, and the site stops
+          being uncomfortable for people who get motion sickness.
+        </p>
+      </section>
+
+      <!-- ===== 11 ===== -->
+      <section id="variables" class="section">
+        <span class="kicker">Section 11</span>
+        <h2>Custom properties</h2>
+        <p>The most useful discovery of the whole course: define a colour once, use it everywhere.</p>
+        <div class="code"><span>the top of css/style.css</span>
+<pre>:root {
+  --ink: #080d14;
+  --text: #e9eff7;
+  --accent: #5ce6b4;
+  --radius: 14px;
+}
+
+body { background: var(--ink); color: var(--text); }
+.card { border-radius: var(--radius); }</pre>
+        </div>
+        <p>
+          Two benefits. Recolouring the site is one edit in <code>:root</code>. And inside
+          <code>@media (prefers-color-scheme: light)</code> I just reassign the same variables, so the
+          whole site follows the operating system's light or dark setting — with no JavaScript and no
+          toggle button.
+        </p>
+        <details>
+          <summary>Why there is no theme switch button</summary>
+          <p>
+            Because a button needs JavaScript to remember the choice. The task is HTML and CSS only,
+            so I let the operating system decide: pick light mode in Windows, the site is light. That
+            is more honest than a button that forgets.
+          </p>
+        </details>
+      </section>
+
+      <section class="wrap section">
+        <div class="demo">
+          <div>
+            <span class="kicker">Next</span>
+            <h2 style="font-size:1.3rem;">See it running on the practice page</h2>
+            <p class="hint">Hover, tabs, progress bars, shapes and a gallery — all of the above, working.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <a class="btn btn-primary" href="practice.html">Open the practice page →</a>
+            <a class="btn" href="html.html">Back to the HTML notes</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:12px;">
+          <span class="brand-mark" aria-hidden="true">TT</span>
+          <span class="brand-text">Tianze Tang<small>Personal website</small></span>
+        </a>
+        <p>Coursework for Introduction to Digital Services (DIG001IT1AE-3033), hand-written in HTML and CSS.</p>
+      </div>
+      <div>
+        <h2>Pages</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="html.html">HTML notes</a></li>
+          <li><a href="css.html">CSS notes</a></li>
+          <li><a href="practice.html">Practice</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>About</h2>
+        <ul>
+          <li>Author: Tianze Tang</li>
+          <li>Course: Digital Services</li>
+          <li>Location: Chengdu, China</li>
+          <li><a href="#main">Back to top ↑</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Tianze Tang · Personal website</span>
+      <span>HTML + CSS. No JavaScript.</span>
+    </div>
+  </footer>
+</body>
+</html>
